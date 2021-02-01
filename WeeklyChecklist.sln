@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeeklyChecklist", "WeeklyChecklist\WeeklyChecklist.csproj", "{C2F2335B-691A-4A5F-9204-BD5FB6D0890B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2F2335B-691A-4A5F-9204-BD5FB6D0890B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F2335B-691A-4A5F-9204-BD5FB6D0890B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F2335B-691A-4A5F-9204-BD5FB6D0890B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F2335B-691A-4A5F-9204-BD5FB6D0890B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8A05895-45F0-4D37-9D2A-C62308BB53BE}
+	EndGlobalSection
+EndGlobal
