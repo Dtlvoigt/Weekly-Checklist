@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +13,32 @@ namespace WeeklyChecklist
         public static bool debug = false;
     }
 
-    //holds info about tasks such as name, count, date completed...
+    //holds info about tasks
     struct Task
     {
+        public string name;
+        public int count;
+        public int completed;
+        public DateTime date;
 
     }
+    
     //holds all tasks
     class TaskList
     {
 
     }
 
+    //user interface loop
+    class UserInterface
+    {
+
+    }
+
     class WeeklyTasks
     {
-        static void Main(string[] args)
+        //check command line args for filename or debug option
+        public static void commandLineChecks(string[] args, ref string filename)
         {
             //check args
             if (args.Length > 2)
@@ -33,9 +46,6 @@ namespace WeeklyChecklist
                 Console.WriteLine("Too many args, exiting..");
                 System.Environment.Exit(0);
             }
-            
-            //filename to store list of tasks
-            String filename = "task_info";  //default name if no input
 
             //check if user wants debug information or has custom filename
             if (args.Length == 1)
@@ -60,9 +70,26 @@ namespace WeeklyChecklist
                     filename = args[0];
                 }
             }
-
-            Console.WriteLine(filename);
-            Console.Read();
         }
+
+        public static unsafe void Main(string[] args)
+        {
+            string filename = "task_info";  //default name if no input
+
+            //check args for correctness
+            commandLineChecks(args, ref filename);
+
+            if (Debug.debug)
+            {
+                Console.WriteLine(filename);
+                Console.Read();
+            }
+
+            //check if filename is valid
+
+            //create TaskList and load tasks from file into it
+        }
+
+        
     }
 }
