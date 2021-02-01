@@ -27,11 +27,36 @@ namespace WeeklyChecklist
     {
         static void Main(string[] args)
         {
-            //user wants debug information
-            if (args[1].ToLower() == "debug")
+            //check args
+            if (args.Length > 2)
+            {
+                Console.WriteLine("Too many args, exiting..");
+                System.Environment.Exit(0);
+            }
+
+            //check if user wants debug information
+            if (args.Length == 1 && args[0].ToLower() == "-debug")
                 Debug.debug = true;
 
-            Console.WriteLine(Debug.debug);
+            String filename = "task_info";  //default filename
+
+            //if two args, make sure second is -debug and then set filename
+            if (args.Length == 2)
+            {
+                if (args[1].ToLower() != "-debug")
+                {
+
+                    Console.WriteLine("When using more than one arg first must be a filename and the second must be \"-debug\"");
+                    System.Environment.Exit(1);
+                }
+                else
+                {
+                    Debug.debug = true;
+                    filename = args[0];
+                }
+            }
+
+            Console.WriteLine(filename);
             Console.Read();
         }
     }
