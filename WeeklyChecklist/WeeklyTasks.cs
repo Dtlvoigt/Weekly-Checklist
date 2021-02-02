@@ -20,7 +20,6 @@ namespace WeeklyChecklist
         public int count;
         public int completed;
         public DateTime date;
-
     }
     
     //holds all tasks
@@ -38,9 +37,9 @@ namespace WeeklyChecklist
     class WeeklyTasks
     {
         //check command line args for filename or debug option
-        public static void commandLineChecks(string[] args, ref string filename)
+        public static void CommandLineChecks(string[] args, ref string filename)
         {
-            //check args
+            //check # of args
             if (args.Length > 2)
             {
                 Console.WriteLine("Too many args, exiting..");
@@ -72,12 +71,12 @@ namespace WeeklyChecklist
             }
         }
 
-        public static unsafe void Main(string[] args)
+        public static void Main(string[] args)
         {
             string filename = "task_info";  //default name if no input
 
             //check args for correctness
-            commandLineChecks(args, ref filename);
+            CommandLineChecks(args, ref filename);
 
             if (Debug.debug)
             {
