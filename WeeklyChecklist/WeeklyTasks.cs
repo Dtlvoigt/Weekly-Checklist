@@ -72,6 +72,11 @@ namespace WeeklyChecklist
             }
         }
 
+        public static bool loadFile(string filename)
+        {
+            return true;
+        }
+
         public static void Main(string[] args)
         {
             string filename = "task_info";  //default name if no input
