@@ -62,7 +62,7 @@ namespace WeeklyChecklist
                 if (args[1].ToLower() != "-debug")
                 {
                     Console.WriteLine("When using two args the first must be a filename and the second must be \"-debug\"");
-                    System.Environment.Exit(1);
+                    System.Environment.Exit(0);
                 }
                 else
                 {
@@ -72,8 +72,18 @@ namespace WeeklyChecklist
             }
         }
 
-        public static bool loadFile(string filename)
+        public static bool LoadFile(string filename)
         {
+            Console.WriteLine("Entered loadFile()");
+            string path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
+            if(!File.Exists(path))
+            {
+                File.CreateText(path);
+            }
+
+            Console.WriteLine("{0}", path);
+            Console.Read();
+
             return true;
         }
 
@@ -85,12 +95,15 @@ namespace WeeklyChecklist
             CommandLineChecks(args, ref filename);
 
             if (Debug.debug)
-            {
                 Console.WriteLine(filename);
-                Console.Read();
-            }
 
             //check if filename is valid
+            if (!LoadFile(filename))
+            {
+                Console.WriteLine("Filename invalid");
+                System.Environment.Exit(1);
+            }
+
 
             //create TaskList and load tasks from file into it
         }
