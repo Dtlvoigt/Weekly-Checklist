@@ -72,10 +72,10 @@ namespace WeeklyChecklist
             }
         }
 
-        public static bool LoadFile(string filename)
+        public static void LoadFile(string filename)
         {
-            Console.WriteLine("Entered loadFile()");
-            string path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
+            //Console.WriteLine("Entered loadFile()");
+            string path = Directory.GetCurrentDirectory() + "\\" + filename + "*.txt";
             if(!File.Exists(path))
             {
                 File.CreateText(path);
@@ -83,8 +83,6 @@ namespace WeeklyChecklist
 
             Console.WriteLine("{0}", path);
             Console.Read();
-
-            return true;
         }
 
         public static void Main(string[] args)
@@ -98,9 +96,18 @@ namespace WeeklyChecklist
                 Console.WriteLine(filename);
 
             //check if filename is valid
-            if (!LoadFile(filename))
+            try
             {
-                Console.WriteLine("Filename invalid");
+                LoadFile(filename);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("File could not be opened: {0}", (filename + ".txt"));
+                if (Debug.debug)
+                {
+                    Console.WriteLine("{0}", e);
+                    Console.Read();
+                }
                 System.Environment.Exit(1);
             }
 
