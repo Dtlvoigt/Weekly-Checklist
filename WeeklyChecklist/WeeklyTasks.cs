@@ -74,8 +74,7 @@ namespace WeeklyChecklist
 
         public static void LoadFile(string filename)
         {
-            //Console.WriteLine("Entered loadFile()");
-            string path = Directory.GetCurrentDirectory() + "\\" + filename + "*.txt";
+            string path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
             if(!File.Exists(path))
             {
                 File.CreateText(path);
