@@ -72,20 +72,6 @@ namespace WeeklyChecklist
             }
         }
 
-        /*public static void LoadFile(string filename)
-        {
-            string path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
-            if(!File.Exists(path))
-            {
-                File.CreateText(path);
-                if (Debug.debug)
-                    Console.WriteLine("new file created: {0}", filename + ".txt");
-            }
-
-            Console.WriteLine("{0}", path);
-            Console.Read();
-        }*/
-
         public static void LoadFile(string filename)
         {
             try
@@ -121,28 +107,8 @@ namespace WeeklyChecklist
             //check args for correctness
             CommandLineChecks(args, ref filename);
 
-            //if (Debug.debug)
-                //Console.WriteLine("path of active file: {0}", filename);
-
             //check if filename is valid
             LoadFile(filename);
-
-            /*//check if filename is valid
-            try
-            {
-                LoadFile(filename);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("File could not be opened: {0}", (filename + ".txt"));
-                if (Debug.debug)
-                {
-                    Console.WriteLine("{0}", e);
-                    Console.Read();
-                }
-                System.Environment.Exit(1);
-            }*/
-
 
             //create TaskList and load tasks from file into it
         }
