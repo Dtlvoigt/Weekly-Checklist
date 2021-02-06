@@ -62,6 +62,7 @@ namespace WeeklyChecklist
                 if (args[1].ToLower() != "-debug")
                 {
                     Console.WriteLine("When using two args the first must be a filename and the second must be \"-debug\"");
+                    Console.Read();
                     System.Environment.Exit(0);
                 }
                 else
@@ -84,9 +85,8 @@ namespace WeeklyChecklist
                         Console.WriteLine("new file created: {0}", filename + ".txt");
                 }
 
-                if(Debug.debug)
+                if (Debug.debug)
                     Console.WriteLine("path of active file:\n{0}", path);
-                Console.Read();//////////////////////////////////////////////
             }
             catch (Exception e)
             {
@@ -98,6 +98,13 @@ namespace WeeklyChecklist
                 Console.Read();
                 System.Environment.Exit(1);
             }
+        }
+
+        public static List<Task> ParseFile(string filename)
+        {
+            List<Task> taskList = new List<Task>();
+
+            return taskList;
         }
 
         public static void Main(string[] args)
