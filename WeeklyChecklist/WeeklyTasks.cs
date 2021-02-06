@@ -78,6 +78,8 @@ namespace WeeklyChecklist
             if(!File.Exists(path))
             {
                 File.CreateText(path);
+                if (Debug.debug)
+                    Console.WriteLine("new file created: {0}", filename + ".txt");
             }
 
             Console.WriteLine("{0}", path);
