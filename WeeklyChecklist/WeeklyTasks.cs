@@ -56,7 +56,7 @@ namespace WeeklyChecklist
                 if (args[0].ToLower() == "-debug")
                     Debug.debug = true;
                 else
-                    filename = args[0];
+                    filename = args[0] + ".txt";
             }
 
             //if two args, make sure second is -debug and then set filename
@@ -71,7 +71,7 @@ namespace WeeklyChecklist
                 else
                 {
                     Debug.debug = true;
-                    filename = args[0];
+                    filename = args[0] + ".txt";
                 }
             }
         }
@@ -82,12 +82,12 @@ namespace WeeklyChecklist
             string path = "";
             try
             {
-                path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
+                path = Path.Combine(Directory.GetCurrentDirectory(), filename);
                 if (!File.Exists(path))
                 {
                     File.CreateText(path);
                     if (Debug.debug)
-                        Console.WriteLine("new file created: {0}", filename + ".txt");
+                        Console.WriteLine("new file created: {0}", filename);
                 }
 
                 if (Debug.debug)
@@ -95,7 +95,7 @@ namespace WeeklyChecklist
             }
             catch (Exception e)
             {
-                Console.WriteLine("File could not be opened: {0}\nExiting Program", (filename + ".txt"));
+                Console.WriteLine("File could not be opened: {0}\nExiting Program", (filename));
 
                 if (Debug.debug)
                     Console.WriteLine("{0}", e);
@@ -103,6 +103,7 @@ namespace WeeklyChecklist
                 Console.Read();
                 System.Environment.Exit(1);
             }
+
             return path;
         }
 
@@ -125,12 +126,12 @@ namespace WeeklyChecklist
 
         public static void Main(string[] args)
         {
-            string filename = "task_info";  //default name if no input
+            string filename = "task_info.txt";  //default name if no input
 
             //check args for correctness and set custom filename
             CommandLineChecks(args, ref filename);
 
-            //check if filename is valid
+            //check if filename is valid and find path
             string path = FindPath(filename);
 
             //create TaskList and load tasks from file into it
