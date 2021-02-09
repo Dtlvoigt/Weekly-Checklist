@@ -32,7 +32,10 @@ namespace WeeklyChecklist
     //user interface loop
     class UserInterface
     {
-
+        //how should I reset tasks for the week?
+        //simple way is to just have user push button
+        //maybe reset monday morning. if user hasn't opened application since then reset.
+        //would have to keep track of last date used
     }
 
     class WeeklyTasks
@@ -73,11 +76,13 @@ namespace WeeklyChecklist
             }
         }
 
-        public static void LoadFile(string filename)
+        //checks if filename and path are valid, returns path to file
+        public static string LoadFile(string filename)
         {
+            string path = "";
             try
             {
-                string path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
+                path = Directory.GetCurrentDirectory() + "\\" + filename + ".txt";
                 if (!File.Exists(path))
                 {
                     File.CreateText(path);
@@ -98,11 +103,22 @@ namespace WeeklyChecklist
                 Console.Read();
                 System.Environment.Exit(1);
             }
+            return path;
         }
 
-        public static List<Task> ParseFile(string filename)
+        public static List<Task> ParseFile(string path)
         {
             List<Task> taskList = new List<Task>();
+
+            try
+            {
+
+                
+            }
+            catch(Exception e)
+            {
+
+            }
 
             return taskList;
         }
@@ -111,13 +127,16 @@ namespace WeeklyChecklist
         {
             string filename = "task_info";  //default name if no input
 
-            //check args for correctness
+            //check args for correctness and set custom filename
             CommandLineChecks(args, ref filename);
 
             //check if filename is valid
-            LoadFile(filename);
+            string path = LoadFile(filename);
 
             //create TaskList and load tasks from file into it
+            List<Task> taskList = ParseFile(path);
+
+         
         }
 
         
