@@ -77,7 +77,7 @@ namespace WeeklyChecklist
         }
 
         //checks if filename and path are valid, returns path to file
-        public static string LoadFile(string filename)
+        public static string FindPath(string filename)
         {
             string path = "";
             try
@@ -131,7 +131,7 @@ namespace WeeklyChecklist
             CommandLineChecks(args, ref filename);
 
             //check if filename is valid
-            string path = LoadFile(filename);
+            string path = FindPath(filename);
 
             //create TaskList and load tasks from file into it
             List<Task> taskList = ParseFile(path);
