@@ -20,8 +20,8 @@ namespace WeeklyChecklist
     {
         public string name;
         public int count;
-        public int lastCompleted;
-        public DateTime date;
+        public int completed;
+        public DateTime lastCompleted;
     }
     
     /*//holds all tasks
