@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WeeklyChecklist
 {
@@ -19,7 +20,7 @@ namespace WeeklyChecklist
     {
         public string name;
         public int count;
-        public int completed;
+        public int lastCompleted;
         public DateTime date;
     }
     
@@ -36,6 +37,8 @@ namespace WeeklyChecklist
         //simple way is to just have user push button
         //maybe reset monday morning. if user hasn't opened application since then reset.
         //would have to keep track of last date used
+        //Allow option to reset individual tasks
+        //don't allow duplicates
     }
 
     class WeeklyTasks
@@ -80,6 +83,7 @@ namespace WeeklyChecklist
         public static string FindPath(string filename)
         {
             string path = "";
+
             try
             {
                 path = Path.Combine(Directory.GetCurrentDirectory(), filename);
@@ -107,14 +111,17 @@ namespace WeeklyChecklist
             return path;
         }
 
+        //reads tasks from file and loads them into a list
         public static List<Task> ParseFile(string path)
         {
             List<Task> taskList = new List<Task>();
 
             try
             {
-
-                
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    
+                }
             }
             catch(Exception e)
             {
@@ -137,7 +144,7 @@ namespace WeeklyChecklist
             //create TaskList and load tasks from file into it
             List<Task> taskList = ParseFile(path);
 
-         
+            Console.Read();
         }
 
         
