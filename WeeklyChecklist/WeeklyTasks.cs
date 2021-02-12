@@ -79,7 +79,7 @@ namespace WeeklyChecklist
             }
         }
 
-        //checks if filename and path are valid, returns path to file
+        //check if filename and path are valid, returns path to file
         public static string FindPath(string filename)
         {
             string path = "";
@@ -143,6 +143,8 @@ namespace WeeklyChecklist
 
             //create TaskList and load tasks from file into it
             List<Task> taskList = ParseFile(path);
+
+            //begin user interface loop
 
             Console.Read();
         }
