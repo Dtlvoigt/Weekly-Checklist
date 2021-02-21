@@ -21,7 +21,7 @@ namespace WeeklyChecklist
         public string name;
         public int count;
         public int completed;
-        public DateTime lastCompleted;
+        //public DateTime lastCompleted;
     }
     
     /*//holds all tasks
@@ -121,10 +121,29 @@ namespace WeeklyChecklist
                 using (StreamReader sr = File.OpenText(path))
                 {
                     //read lines until eof
-                    string line;
+                    string line = "";
                     while ((line = sr.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
+                        Task newTask = new Task();
+
+                        string[] fields = line.Split(',');
+                        newTask.name = fields[0];
+                        newTask.count = int.Parse(fields[1]);
+                        newTask.completed = int.Parse(fields[2]);
+                        
+
+                        /*newTask.count = int.Parse(sr.ReadLine());
+                        newTask.completed = int.Parse(sr.ReadLine());
+                        newTask.name = sr.ReadLine();*/
+
+                        //newTask.count = int.Parse(line);
+
+                        //newTask.completed = int.Parse(line);
+                        //newTask.name = line;
+
+                        //Console.WriteLine($"hello, {newTask.count}, {newTask.completed}, {newTask.name}");
+
                     }
                     /*using (JsonTextReader reader = new JsonTextReader(sr))
                     {
