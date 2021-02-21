@@ -23,7 +23,12 @@ namespace WeeklyChecklist
         public int completed;
         //public DateTime lastCompleted;
 
-
+        public Task(string name, int count = 0, int completed = 0)
+        {
+            this.name = name;
+            this.count = count;
+            this.completed = completed;
+        }
     }
     
     /*//holds all tasks
@@ -129,17 +134,17 @@ namespace WeeklyChecklist
                     //read lines until eof
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Task newTask = new Task();
-
                         //split line from file and set fields of task
                         string[] fields = line.Split(',');
-                        newTask.name = fields[0];
-                        newTask.count = int.Parse(fields[1]);
-                        newTask.completed = int.Parse(fields[2]);
+                        int count = int.Parse(fields[1]);
+                        int completed = int.Parse(fields[2]);
 
+                        Task newTask = new Task(fields[0], count, completed);
                         taskList.Add(newTask);
-                        
 
+                        //newTask.name = fields[0];
+                        //newTask.count = int.Parse(fields[1]);
+                        //newTask.completed = int.Parse(fields[2]);
                         /*newTask.count = int.Parse(sr.ReadLine());
                         newTask.completed = int.Parse(sr.ReadLine());
                         newTask.name = sr.ReadLine();*/
