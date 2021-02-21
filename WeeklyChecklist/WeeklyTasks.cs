@@ -189,11 +189,17 @@ namespace WeeklyChecklist
                     Console.ForegroundColor = ConsoleColor.White;
                     count++;
                 }
-
-                Console.Read();
+                
+                Console.Read();///////
                 
                 done = true;
             }
+        }
+
+        //writes updated tasks back to file
+        public static void WriteFile(ref List<Task> taskList, string path)
+        {
+
         }
 
         public static void Main(string[] args)
@@ -211,6 +217,9 @@ namespace WeeklyChecklist
 
             //begin user interface loop
             UserInterface(ref taskList);
+
+            //write updated tasks back to file
+            WriteFile(ref taskList, path);
 
             Console.Read();
         }
