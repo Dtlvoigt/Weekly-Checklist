@@ -38,15 +38,16 @@ namespace WeeklyChecklist
     }*/
 
     //user interface loop
-    class UserInterface
-    {
+    //class UserInterface
+    //{
+        
         //how should I reset tasks for the week?
         //simple way is to just have user push button
         //maybe reset monday morning. if user hasn't opened application since then reset.
         //would have to keep track of last date used
         //Allow option to reset individual tasks
         //don't allow duplicates
-    }
+    //}
 
     class WeeklyTasks
     {
@@ -141,27 +142,7 @@ namespace WeeklyChecklist
 
                         Task newTask = new Task(fields[0], count, completed);
                         taskList.Add(newTask);
-
-                        //newTask.name = fields[0];
-                        //newTask.count = int.Parse(fields[1]);
-                        //newTask.completed = int.Parse(fields[2]);
-                        /*newTask.count = int.Parse(sr.ReadLine());
-                        newTask.completed = int.Parse(sr.ReadLine());
-                        newTask.name = sr.ReadLine();*/
-
-                        //newTask.count = int.Parse(line);
-
-                        //newTask.completed = int.Parse(line);
-                        //newTask.name = line;
-
-                        //Console.WriteLine($"hello, {newTask.count}, {newTask.completed}, {newTask.name}");
-
                     }
-                    /*using (JsonTextReader reader = new JsonTextReader(sr))
-                    {
-                        
-                    }*/
-
                 }
             }
             catch(Exception e)
