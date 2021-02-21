@@ -154,6 +154,23 @@ namespace WeeklyChecklist
             return taskList;
         }
 
+        //loop that allows user to add, remove, complete, and reset tasks
+        public static void UserInterface()
+        {
+            bool done = false;
+
+            while(!done)
+            {
+                //begin by clearing screen and presenting tasks
+                Console.Clear();
+
+                
+                
+                
+                done = true;
+            }
+        }
+
         public static void Main(string[] args)
         {
             string filename = "task_info.txt";  //default name if no input
@@ -168,6 +185,7 @@ namespace WeeklyChecklist
             List<Task> taskList = ParseFile(path);
 
             //begin user interface loop
+            UserInterface();
 
             Console.Read();
         }
