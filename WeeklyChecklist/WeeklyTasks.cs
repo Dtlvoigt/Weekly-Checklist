@@ -155,7 +155,7 @@ namespace WeeklyChecklist
         }
 
         //loop that allows user to add, remove, complete, and reset tasks
-        public static void UserInterface()
+        public static void UserInterface(ref List<Task> taskList)
         {
             bool done = false;
 
@@ -163,9 +163,34 @@ namespace WeeklyChecklist
             {
                 //begin by clearing screen and presenting tasks
                 Console.Clear();
+                Console.WriteLine($"{"    Task"}\t\t\t\t{"Num to Complete"}\t\t{"Num Completed"}\n");
+                //Console.WriteLine($"{"Task",0}{"Num to Complete",40}{"Num Completed",20}\n");
 
-                
-                
+                int count = 1;
+                foreach (Task task in taskList)
+                {
+                    //format output based on task number
+                    string index = "";
+                    if (count < 10)
+                        index = (count + ".  ");
+                    else if (count < 100)
+                        index = (count + ". ");
+                    else
+                        index = (count + ".");
+
+                    //if task is done for the week display line in green
+                    if (task.count == task.completed)
+                        Console.ForegroundColor = ConsoleColor.Green;
+
+                    //write out task
+                    Console.WriteLine($"{index}{task.name}\t\t{task.count}\t\t\t{task.completed}");
+
+                    //change text color back to white
+                    Console.ForegroundColor = ConsoleColor.White;
+                    count++;
+                }
+
+                Console.Read();
                 
                 done = true;
             }
@@ -185,7 +210,7 @@ namespace WeeklyChecklist
             List<Task> taskList = ParseFile(path);
 
             //begin user interface loop
-            UserInterface();
+            UserInterface(ref taskList);
 
             Console.Read();
         }
