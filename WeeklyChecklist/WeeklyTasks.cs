@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 namespace WeeklyChecklist
 {
@@ -120,7 +120,17 @@ namespace WeeklyChecklist
             {
                 using (StreamReader sr = File.OpenText(path))
                 {
-                    
+                    //read lines until eof
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                    }
+                    /*using (JsonTextReader reader = new JsonTextReader(sr))
+                    {
+                        
+                    }*/
+
                 }
             }
             catch(Exception e)
