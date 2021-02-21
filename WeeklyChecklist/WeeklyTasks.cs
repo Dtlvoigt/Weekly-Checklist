@@ -22,6 +22,8 @@ namespace WeeklyChecklist
         public int count;
         public int completed;
         //public DateTime lastCompleted;
+
+
     }
     
     /*//holds all tasks
@@ -86,9 +88,11 @@ namespace WeeklyChecklist
 
             try
             {
+                //create the path to the filename
                 path = Path.Combine(Directory.GetCurrentDirectory(), filename);
                 if (!File.Exists(path))
                 {
+                    //create new file if it doesn't exist
                     File.CreateText(path);
                     if (Debug.debug)
                         Console.WriteLine("new file created: {0}", filename);
@@ -120,17 +124,20 @@ namespace WeeklyChecklist
             {
                 using (StreamReader sr = File.OpenText(path))
                 {
-                    //read lines until eof
                     string line = "";
+
+                    //read lines until eof
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(line);
                         Task newTask = new Task();
 
+                        //split line from file and set fields of task
                         string[] fields = line.Split(',');
                         newTask.name = fields[0];
                         newTask.count = int.Parse(fields[1]);
                         newTask.completed = int.Parse(fields[2]);
+
+                        taskList.Add(newTask);
                         
 
                         /*newTask.count = int.Parse(sr.ReadLine());
@@ -154,7 +161,8 @@ namespace WeeklyChecklist
             }
             catch(Exception e)
             {
-
+                if (Debug.debug)
+                    Console.WriteLine("{0}", e);
             }
 
             return taskList;
